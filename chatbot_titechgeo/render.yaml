@@ -2,9 +2,10 @@ services:
   - type: web
     name: chatbot-titechgeo
     runtime: python
+    plan: free
     rootDir: chatbot_titechgeo
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: OPENAI_API_KEY
         sync: false
